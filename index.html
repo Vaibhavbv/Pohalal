@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pay POHALAL FOODS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 24px;
+      text-align: center;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 24px;
+      max-width: 420px;
+      margin: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 22px;
+      margin: 0 0 6px;
+    }
+    p {
+      color: #555;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+    .btn {
+      display: block;
+      text-decoration: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 10px;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+    .upi {
+      background: #16a34a;
+      color: #fff;
+    }
+    .phonepe {
+      background: #5f259f;
+      color: #fff;
+    }
+    .paytm {
+      background: #002e6e;
+      color: #fff;
+    }
+    .bharatpe {
+      background: #0f766e;
+      color: #fff;
+    }
+    .note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 12px;
+    }
+    #reviewSection {
+      display: none;
+      margin-top: 28px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+    .review-btn {
+      background: #2563eb;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>POHALAL FOODS</h1>
+    <p>Select your preferred UPI app</p>
+    <!-- DEFAULT UPI (RECOMMENDED) -->
+    <a
+      href="upi://pay?pa=paytm.s1p208n@pty&pn=POHALAL%20FOODS&cu=INR"
+      class="btn upi"
+      id="payDefault"
+    >
+      Pay via UPI (Recommended)
+    </a>
+    <!-- PHONEPE -->
+    <a
+      href="phonepe://pay?pa=paytm.s1p208n@pty&pn=POHALAL%20FOODS&cu=INR"
+      class="btn phonepe"
+      id="payPhonePe"
+    >
+      Pay via PhonePe
+    </a>
+    <!-- PAYTM -->
+    <a
+      href="paytmmp://pay?pa=paytm.s1p208n@pty&pn=POHALAL%20FOODS&cu=INR"
+      class="btn paytm"
+      id="payPaytm"
+    >
+      Pay via Paytm
+    </a>
+    <!-- BHARATPE -->
+    <a
+      href="bharatpe://pay?pa=paytm.s1p208n@pty&pn=POHALAL%20FOODS&cu=INR"
+      class="btn bharatpe"
+      id="payBharatPe"
+    >
+      Pay via BharatPe
+    </a>
+    <div class="note">
+      If a specific app doesn’t open, use “Pay via UPI (Recommended)”.
+    </div>
+    <!-- REVIEW SECTION -->
+    <div id="reviewSection">
+      <h2>Thank you :pray:</h2>
+      <p>If you liked the food, please leave a quick review.</p>
+      <a
+        href="https://g.page/r/CWOe1NUtg4i0EBE/review"
+        target="_blank"
+        class="btn review-btn"
+      >
+        Leave Google Review :star:
+      </a>
+    </div>
+  </div>
+  <script>
+    let paymentInitiated = false;
+    document.querySelectorAll("a[href^='upi'], a[href^='phonepe'], a[href^='paytmmp'], a[href^='bharatpe']")
+      .forEach(link => {
+        link.addEventListener("click", () => {
+          paymentInitiated = true;
+        });
+      });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && paymentInitiated) {
+        document.getElementById("reviewSection").style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
